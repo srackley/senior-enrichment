@@ -14,7 +14,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /jsx?$/,
         include: resolve(__dirname, './app'),
@@ -22,6 +22,14 @@ module.exports = {
         query: {
           presets: ['react', 'es2015', 'stage-2', 'env'],
         },
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
