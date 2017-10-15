@@ -1,13 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
-class Campuses extends Component {
-  render() {
-    return (
-      <main>
-        <h3>Campuses will go here</h3>
-      </main>
-    );
-  }
+export function Campuses(props) {
+  const { students } = props;
+  console.log(props);
+  return (
+    <main>
+      {
+        props.campuses.map(campus => (
+          <span>
+            <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
+              <img src={campus.image} alt={campus.name} />
+              <span>{campus.name}</span>
+            </NavLink>
+          </span>
+        ))
+      }
+    </main>
+  );
 }
 
-export default Campuses;
+/** Write your `connect` component below! * */
+
+function mapStateToProps(state) {
+  return { campuses: state.campuses, students: state.students };
+}
+
+export default withRouter(connect(mapStateToProps)(Campuses));
