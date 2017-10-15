@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../index');
+const Campuses = require('./campuses');
 
 module.exports = db.define('students', {
   name: {
@@ -9,5 +10,11 @@ module.exports = db.define('students', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
+  },
+}, {
+  defaultScope: {
+    include: [
+      { model: Campuses },
+    ],
   },
 });
