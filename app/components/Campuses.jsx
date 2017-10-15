@@ -3,21 +3,24 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+
 export function Campuses(props) {
-  const { students } = props;
-  console.log(props);
   return (
     <main>
-      {
+      <div className="flex">
+        {
         props.campuses.map(campus => (
-          <span>
+          <div align="center">
             <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
-              <img src={campus.image} alt={campus.name} />
-              <span>{campus.name}</span>
+              <div className="media container">
+                <img src={campus.image} alt={campus.name} />
+                <div className="centered">{campus.name}</div>
+              </div>
             </NavLink>
-          </span>
+          </div>
         ))
       }
+      </div>
     </main>
   );
 }
