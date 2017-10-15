@@ -10,7 +10,7 @@ export function Campuses(props) {
       <div className="flex">
         {
         props.campuses.map(campus => (
-          <div align="center">
+          <div>
             <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
               <div className="media container">
                 <img src={campus.image} alt={campus.name} />
@@ -24,8 +24,6 @@ export function Campuses(props) {
     </main>
   );
 }
-
-/** Write your `connect` component below! * */
 
 function mapStateToProps(state) {
   return { campuses: state.campuses, students: state.students };

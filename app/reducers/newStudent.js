@@ -1,7 +1,7 @@
 const WRITE_STUDENT = 'WRITE_STUDENT';
 
-export function writeStudent(content) {
-  const action = { type: WRITE_STUDENT, content };
+export function writeStudent(name) {
+  const action = { type: WRITE_STUDENT, name };
   return action;
 }
 
