@@ -14,12 +14,12 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
   Campuses.findOrCreate({
     where: {
-      name: req.body.name,
+      id: req.body.campusId,
     },
   })
     .spread((campus) => {
       const student = Students.build(req.body);
-      student.setCampuses(campus, { save: false });
+      student.setCampus(campus, { save: false });
       return student.save()
         .then((student) => {
           student = student.toJSON();
@@ -35,10 +35,11 @@ router.post('/', (req, res, next) => {
 
 // PUT /api/students
 router.put('/:studentId', (req, res, next) => {
-  const studentId = req.params.studentId;
+  const { studentId } = req.params;
 
   Students.findById(studentId)
     .then(student => student.update(req.body))
+    .then(res.end())
     .catch(next);
 });
 

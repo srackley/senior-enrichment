@@ -36,10 +36,11 @@ router.post('/', (req, res, next) => {
 
 // PUT /api/campuses
 router.put('/:campusId', (req, res, next) => {
-  const campusId = req.params.campusId;
+  const { campusId } = req.params;
 
   Campuses.findById(campusId)
     .then(campus => campus.update(req.body))
+    .then(res.end())
     .catch(next);
 });
 
