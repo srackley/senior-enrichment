@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Campuses from './Campuses';
-import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import SingleCampus from './SingleCampus';
 import AddCampus from './AddCampus';
@@ -24,7 +23,6 @@ export default class Root extends Component {
     return (
       <div>
         <Navbar />
-        <Sidebar />
         <Switch>
           <Route exact path="/" component={Campuses} />
           <Route exact path="/campuses" component={Campuses} />

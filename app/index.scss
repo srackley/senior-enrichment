@@ -10,79 +10,49 @@ body {
   #main {
     height: 100%;
 
+    .campus {
+      padding: 20px;
+    }
+
+    table {
+      font-family: 'Arial';
+      margin: 25px auto;
+      border-collapse: collapse;
+      border: 1px solid #eee;
+      border-bottom: 2px solid #00cccc;
+      box-shadow:
+        0px 0px 20px rgba(0,0,0,0.10),
+        0px 10px 20px rgba(0,0,0,0.05),
+        0px 20px 20px rgba(0,0,0,0.05),
+        0px 30px 20px rgba(0,0,0,0.05);
+      tr {
+        &:hover {
+          background: #f4f4f4;
+
+          td {
+            color: #555;
+          }
+        }
+      }
+      th, td {
+        color: #999;
+        padding: 12px 35px;
+        border-collapse: collapse;
+      }
+      th {
+        background: #00bc8c;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 12px;
+        &.last {
+          border-right: none;
+        }
+      }
+    }
+
     & > div {
       height: 100%;
       display: flex;
-    }
-
-    sidebar {
-      background-color: $default-background;
-      color: $default-font-color;
-      z-index: 2;
-
-      .sidebar-header {
-        height: 53px;
-        width: 220px;
-        background-color: $darker-background;
-        border-bottom: 1px solid gray;
-        color: white;
-
-        h3 {
-          display: flex;
-          align-items: center;
-          margin: 0;
-          padding: 12px;
-
-          div {
-            margin-right: 10px;
-          }
-        }
-      }
-      h5 {
-        text-transform: uppercase;
-        margin-left: 16px;
-      }
-
-      ul {
-        text-transform: lowercase;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-
-        li {
-          height: 28px;
-          width: 205px;
-
-          a {
-            color: $default-font-color;
-            padding-left: 16px;
-            padding-top: 3px;
-            display: list-item;
-            height: 100%;
-            width: 100%;
-
-            &:hover, &:focus {
-              color: $default-font-color;
-              background-color: $darker-background;
-              text-decoration: none;
-            }
-
-            &.active {
-              background-color: $active-background;
-              color: $active-font-folor;
-              border-radius: 0 5px 5px 0;
-            }
-
-            span:first-child {
-              margin-right: 10px;
-            }
-          }
-
-          &:last-child {
-            text-decoration: underline;
-          }
-        }
-      }
     }
 
     nav {
@@ -100,16 +70,28 @@ body {
         flex: 1 1 auto;
       }
 
+      .menu-item {
+        padding-bottom: 0px;
+      }
+      .menu-item a {
+        padding: 20px;
+          border-radius: 20px 20px 0 0;
+          transition: border-bottom, 0.2s;
+          padding-bottom: 15px;
+          background: slategray;
+          color: rgb(233, 232, 224); }
+      .menu-item a:hover {
+            color: white; }
+      .menu-item a.active, .menu-item a:hover {
+          background-color: $darker-background;
+          border-bottom: 3px solid #00bc8c;
+          box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+          0px 10px 20px rgba(0,0,0,0.05),
+          0px 20px 20px rgba(0,0,0,0.05),
+          0px 30px 20px rgba(0,0,0,0.05);}
+
       .nav-link {
         padding: 10px;
-      }
-
-      form {
-        margin: 0 10px 0 0;
-
-        label {
-          margin-right: 1rem;
-        }
       }
     }
 

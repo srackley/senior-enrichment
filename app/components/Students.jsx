@@ -26,15 +26,28 @@ export class Students extends Component {
 
     return (
       <main>
-        <ul className="media-list">
+        <table sortable="true">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Campus</th>
+            <th>Edit</th>
+          </tr>
           { students.map(student =>
-            <li key={student.id}>
-            <NavLink to={`/students/${student.id}`} activeClassName="active">
-                <div className="centered">{student.name}</div>
-            </NavLink>
-          </li>
-            ) }
-        </ul>
+            (
+              <tr>
+
+                <td>{student.id}</td>
+                <td>{student.name}</td>
+                <td>{student.campus.name}</td>
+                <td>
+                  <NavLink to={`/students/${student.id}`}>
+                    <i className="fa fa-pencil-square-o" />
+                  </NavLink>
+                </td>
+              </tr>
+            )) }
+        </table>
       </main>
     );
   }

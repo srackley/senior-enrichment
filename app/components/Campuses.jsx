@@ -10,7 +10,7 @@ export function Campuses(props) {
       <div className="flex">
         {
         props.campuses.map(campus => (
-          <div>
+          <div className="campus">
             <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
               <div className="media container">
                 <img src={campus.image} alt={campus.name} />
@@ -21,6 +21,11 @@ export function Campuses(props) {
         ))
       }
       </div>
+      <li>
+        <NavLink to="/new-campus" >
+          <span>Add a campus</span>
+        </NavLink>
+      </li>
     </main>
   );
 }
