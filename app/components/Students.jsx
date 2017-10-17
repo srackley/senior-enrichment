@@ -1,10 +1,11 @@
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Table, PageHeader } from 'react-bootstrap';
 import React, { Component } from 'react';
 import SingleStudent from './SingleStudent';
 import AddStudent from './AddStudent';
 import store from '../store';
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 
 
 export class Students extends Component {
@@ -26,14 +27,18 @@ export class Students extends Component {
 
     return (
       <main>
-        <table sortable="true">
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Campus</th>
-            <th>Edit</th>
-          </tr>
-          { students.map(student =>
+        <PageHeader>Students</PageHeader>
+        <Table responsive hover fill>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Campus</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            { students.map(student =>
             (
               <tr>
 
@@ -47,7 +52,8 @@ export class Students extends Component {
                 </td>
               </tr>
             )) }
-        </table>
+          </tbody>
+        </Table>
       </main>
     );
   }

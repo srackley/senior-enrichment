@@ -1,22 +1,35 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
-export default function Navbar() {
+export default function Header() {
   return (
-    <nav>
-      <h3>Margaret Hamilton Interplanetary Academy</h3>
-      <h4 className="nav-link menu-item">
-        <NavLink to="/campuses" style={{ textDecoration: 'none' }}>
-          <i className="fa fa-home" /> Home
-        </NavLink>
-      </h4>
-      <h4 className="nav-link menu-item">
-        <NavLink style={{ textDecoration: 'none' }}to="/students" >
-          <i className="fa fa-users" />
-          Students
-        </NavLink>
-      </h4>
-
-    </nav>
+    <Navbar fixedTop fluid collapseOnSelect>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <h3>Margaret Hamilton</h3>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav bsStyle="pills" pullRight>
+          <LinkContainer to="/">
+            <NavItem eventKey={1} href="/">
+              <i className="fa fa-home" /> Home
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/campuses">
+            <NavItem eventKey={1} href="/campuses">
+              <i className="fa fa-university" /> Campuses
+            </NavItem>
+          </LinkContainer>
+          <LinkContainer to="/students" >
+            <NavItem>
+              <i className="fa fa-graduation-cap" /> Students
+            </NavItem>
+          </LinkContainer>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }

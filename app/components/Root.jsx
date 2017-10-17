@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Campuses from './Campuses';
-import Navbar from './Navbar';
+import Header from './Navbar';
 import SingleCampus from './SingleCampus';
 import AddCampus from './AddCampus';
 import NotFound from './NotFound';
 import Students from './Students';
 import SingleStudent from './SingleStudent';
 import AddStudent from './AddStudent';
+import Home from './Home';
 import { fetchStudents, fetchCampuses } from '../reducers';
 import store from '../store';
+
 
 export default class Root extends Component {
   componentDidMount() {
@@ -22,9 +24,9 @@ export default class Root extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Header />
         <Switch>
-          <Route exact path="/" component={Campuses} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/campuses" component={Campuses} />
           <Route exact path="/students" component={Students} />
           <Route exact path="/new-campus" component={AddCampus} />

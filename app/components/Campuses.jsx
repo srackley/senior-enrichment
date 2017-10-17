@@ -2,25 +2,26 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
+import { PageHeader, Image, Grid, Col } from 'react-bootstrap';
 
 export function Campuses(props) {
   return (
     <main>
-      <div className="flex">
+      <PageHeader>Campuses</PageHeader>
+      <Grid>
         {
         props.campuses.map(campus => (
           <div className="campus">
             <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
-              <div className="media container">
-                <img src={campus.image} alt={campus.name} />
+              <Col lg={6}>
+                <Image src={campus.image} circle responsive />
                 <div className="centered">{campus.name}</div>
-              </div>
+              </Col>
             </NavLink>
           </div>
         ))
       }
-      </div>
+      </Grid>
       <li>
         <NavLink to="/new-campus" >
           <span>Add a campus</span>
