@@ -53,6 +53,7 @@ body {
 
     .nav-item {
       height: auto;
+      padding-top: 40px;
       margin: 0 1.5em 0 0;
     }
 
@@ -62,7 +63,7 @@ body {
       color: #fff;
       text-decoration: none;
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 10px;
       transition: all ease 1s;
 
       &:hover {
@@ -118,6 +119,44 @@ body {
       h2 {
         font-family: $script-font-family;
       }
+  }
+
+  .campus {
+    position: relative;
+    text-align: center;
+    padding: 40px;
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8em;
+    color: white;
+    font-family: $script-font-family;
+    text-shadow: 2px 2px 4px #000000;
+  }
+
+  #plus {
+    font-size: 5em;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    z-index: 4;
+    color: $default-background;
+    text-shadow: 5px 5px 8px #000000;
+    transition: all .3s ease;
+
+    &:hover {
+      color: $darker-background;
+      transform: translateY(1px);
+      text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+  }
+
+  .pageHeading {
+    padding-top: 20px;
   }
 }
 }

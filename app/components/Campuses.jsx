@@ -2,12 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { PageHeader, Image, Grid, Col } from 'react-bootstrap';
+import { Image, Grid, Col } from 'react-bootstrap';
 
 export function Campuses(props) {
   return (
     <main>
-      <PageHeader>Campuses</PageHeader>
+      <NavLink to="/new-campus" id="plus">
+        <i className="glyphicon glyphicon-plus" />
+      </NavLink>
+      <div className="pageHeading">
+        <h1>Campuses</h1>
+      </div>
       <Grid>
         {
         props.campuses.map(campus => (
@@ -22,11 +27,6 @@ export function Campuses(props) {
         ))
       }
       </Grid>
-      <li>
-        <NavLink to="/new-campus" >
-          <span>Add a campus</span>
-        </NavLink>
-      </li>
     </main>
   );
 }
