@@ -10,10 +10,10 @@ import SingleStudent from './SingleStudent';
 import AddStudent from './AddStudent';
 import Home from './Home';
 import { fetchStudents, fetchCampuses } from '../reducers';
-import store from '../store';
+import { connect } from 'react-redux';
 
 
-export default class Root extends Component {
+export class Root extends Component {
   componentDidMount() {
     const header = document.getElementsByTagName('header')[0];
 
@@ -39,10 +39,8 @@ export default class Root extends Component {
       }
     });
 
-    const studentsThunk = fetchStudents();
-    const campusesThunk = fetchCampuses();
-    store.dispatch(studentsThunk);
-    store.dispatch(campusesThunk);
+    this.props.fetchCampuses();
+    this.props.fetchStudents();
   }
 
   render() {
@@ -64,3 +62,8 @@ export default class Root extends Component {
     );
   }
 }
+
+const mapStateToProps = null;
+const mapDispatchToProps = { fetchCampuses, fetchStudents };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

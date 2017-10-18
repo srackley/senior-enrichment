@@ -33,7 +33,7 @@ export function postCampus(campus, history) {
         const action = getCampus(newCampus);
         dispatch(action);
         // socket.emit('new-campus', newCampus);
-        history.push(`/campuses/${newCampus.id}`);
+        // history.push(`/campuses/${newCampus.id}`);
       });
   };
 }

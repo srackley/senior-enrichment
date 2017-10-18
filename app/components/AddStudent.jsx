@@ -1,61 +1,69 @@
 import React, { Component } from 'react';
-import { FieldGroup, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { writeStudentName, postStudent } from '../store';
+import { postStudent } from '../reducers';
+import store from '../store';
 
 export class AddStudent extends Component {
-  render() {
-    return (
-      <form>
-        <FieldGroup
-          id="name"
-          type="name"
-          label="Name"
-          placeholder="Enter name"
-        />
-        <FieldGroup
-          id="email"
-          type="email"
-          label="Email address"
-          placeholder="Enter email"
-        />
-
-        <FormGroup controlId="select">
-          <ControlLabel>Campus</ControlLabel>
-          <FormControl componentClass="select" placeholder="select">
-            <option value="select">select</option>
-            <option value="other">...</option>
-          </FormControl>
-        </FormGroup>
-
-        <Button type="submit">
-        Submit
-        </Button>
-      </form>
-    );
+  constructor() {
+  super();
+  this.state = {
+    name: '',
+    email: '',
+    campus: '',
   }
 }
 
+render(){
+return (
+    <main>
+      <form onSubmit={
+        event => {
+        event.preventDefault();
+        store.dispatch(postStudent({
+          name: this.state.name,
+          email: this.state.email,
+          campus: this.state.campus
+         }));
+      }}>
+        <div className="form-group">
+          <label htmlFor="name">Student's Name</label>
+          <input value={this.props.newStudent}
+          onChange={event => {
+            this.setState({name: event.target.value})}} className="form-control" type="text" name="campusName" placeholder="Enter name" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input value={this.props.newStudent}
+          onChange={event => {
+            this.setState({email: event.target.value});
+          }} className="form-control" type="text" name="campusName" placeholder="Enter email" />
+        </div>
+        <div className="form-group">
+        <label htmlFor="campus">Campus</label>
+        <select onChange={event => {
+          this.setState({campus: event.target.value})
+        }} >
+          {this.props.campuses.map(campus =>
+            <option>{campus.name}</option>
+          )}
+        </select>
+      </div>
+        <div className="form-group">
+          <button type="submit" className="btn btn-default">Add Student</button>
+        </div>
+      </form>
+    </main>
+  );
+}
+}
 
 function mapStateToProps(state, ownProps) {
-  return { newStudent: state.newStudent };
-}
-
-function mapDispatchToProps(dispatch, ownProps) {
   return {
-    handleChange(event) {
-      const action = writeStudentName(event.target.value);
-      dispatch(action);
-    },
-    handleSubmit(event) {
-      event.preventDefault();
-      const name = event.target.name.value;
-      dispatch(postStudent({ name }, ownProps.history));
-      dispatch(writeStudentName(''));
-    },
-
-  };
+    campuses: state.campuses,
+    students: state.students
+ };
 }
 
-const newStudentContainer = connect(mapStateToProps, mapDispatchToProps)(AddStudent);
-export default newStudentContainer;
+const mapDispatchToProps = null;
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddStudent);

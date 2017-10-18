@@ -1,15 +1,37 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { writeCampusName, postCampus } from '../store';
+import { postCampus } from '../reducers';
+import store from '../store';
 
+export class AddCampus extends Component {
+  constructor() {
+  super();
+  this.state = {
+    name: '',
+    image: '',
+  }
+}
 
-export function AddCampus(props) {
-  return (
+render(){
+return (
     <main>
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={
+        event => {
+        event.preventDefault();
+        store.dispatch(postCampus({
+          name: this.state.name,
+          image: this.state.image }));
+      }}>
         <div className="form-group">
           <label htmlFor="name">Add a Campus</label>
-          <input value={props.newCampus} onChange={props.handleChange} className="form-control" type="text" name="campusName" placeholder="Enter campus name" />
+          <input value={this.props.newCampus}
+          onChange={event => {
+            this.setState({name: event.target.value})}} className="form-control" type="text" name="campusName" placeholder="Enter campus name" />
+          <label htmlFor="name">Add an Image</label>
+          <input value={this.props.newCampus}
+          onChange={event => {
+            this.setState({image: event.target.value});
+          }} className="form-control" type="text" name="campusName" placeholder="Enter image url" />
         </div>
         <div className="form-group">
           <button type="submit" className="btn btn-default">Add Campus</button>
@@ -18,24 +40,12 @@ export function AddCampus(props) {
     </main>
   );
 }
+}
 
 function mapStateToProps(state, ownProps) {
-  return { newCampus: state.newCampus };
+  return { campuses: state.campuses };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
-  return {
-    handleChange(event) {
-      dispatch(writeCampusName(event.target.value));
-    },
-    // handleSubmit(event) {
-    //   event.preventDefault();
-    //   const name = event.target.campusName.value;
-    //   dispatch(postCampus({ name }, ownProps.history));
-    //   dispatch(writeCampusName(''));
-    // },
-
-  };
-}
+const mapDispatchToProps = null;
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCampus);
