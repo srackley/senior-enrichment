@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
-class SingleCampus extends Component {
-  render() {
-    return (
-      <main>
-        <h1>Here you will view an individual campus</h1>
-      </main>
-    );
-  }
+export function SingleCampus(props) {
+  return (
+    <main>
+      <h1>Here you will view an individual campus {props.match.params.campusId} </h1>
+    </main>
+  );
 }
 
-export default SingleCampus;
+function mapStateToProps(state) {
+  return { campuses: state.campuses, students: state.students };
+}
+
+export default withRouter(connect(mapStateToProps)(SingleCampus));

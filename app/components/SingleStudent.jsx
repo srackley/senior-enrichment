@@ -1,14 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
-export default function SingleStudent(props) {
-  const { student } = props;
-
+export function SingleStudent(props) {
+  const id = props.match.params.studentId;
   return (
-    <li className="media">
-      <div className="media-body">
-        <h4 className="media-heading">{ student.name }</h4>
-        { student.email }
-      </div>
-    </li>
+    <main>
+      <h1>Here you will view an individual student {id} </h1>
+    </main>
   );
 }
+
+function mapStateToProps(state) {
+  return { campuses: state.campuses, students: state.students };
+}
+
+export default withRouter(connect(mapStateToProps)(SingleStudent));
