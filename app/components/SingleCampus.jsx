@@ -11,7 +11,7 @@ export function SingleCampus(props) {
   return (
     <main>
       { (campus && students) ?
-        <main>
+        <div>
           <h1>{campus.name}</h1>
           <img src={campus.image} />
           <Table responsive hover fill>
@@ -38,7 +38,7 @@ export function SingleCampus(props) {
             ))}
             </tbody>
           </Table>
-        </main>
+        </div>
 
         : null
 
