@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 export function SingleCampus(props) {
+  const selectedCampus = props.campuses.filter(campus => campus.id === Number(props.match.params.campusId));
   return (
-    <main>
-      <h1>Here you will view an individual campus {props.match.params.campusId} </h1>
-    </main>
+    <main />
   );
 }
 

@@ -26,18 +26,16 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     handleChange(event) {
-      const action = writeCampusName(event.target.value);
-      dispatch(action);
+      dispatch(writeCampusName(event.target.value));
     },
-    handleSubmit(event) {
-      event.preventDefault();
-      const name = event.target.campusName.value;
-      dispatch(postCampus({ name }, ownProps.history));
-      dispatch(writeCampusName(''));
-    },
+    // handleSubmit(event) {
+    //   event.preventDefault();
+    //   const name = event.target.campusName.value;
+    //   dispatch(postCampus({ name }, ownProps.history));
+    //   dispatch(writeCampusName(''));
+    // },
 
   };
 }
 
-const newCampusContainer = connect(mapStateToProps, mapDispatchToProps)(AddCampus);
-export default newCampusContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(AddCampus);

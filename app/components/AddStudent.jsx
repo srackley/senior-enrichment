@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
 import { FieldGroup, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { writeStudentName, postStudent } from '../store';
 
-export default class AddStudent extends Component {
+export class AddStudent extends Component {
   render() {
     return (
       <form>
         <FieldGroup
-          id="formControlsName"
+          id="name"
           type="name"
-          label="name"
+          label="Name"
           placeholder="Enter name"
         />
         <FieldGroup
-          id="formControlsEmail"
+          id="email"
           type="email"
           label="Email address"
           placeholder="Enter email"
         />
 
-        <FormGroup controlId="formControlsSelect">
-          <ControlLabel>Select</ControlLabel>
+        <FormGroup controlId="select">
+          <ControlLabel>Campus</ControlLabel>
           <FormControl componentClass="select" placeholder="select">
             <option value="select">select</option>
             <option value="other">...</option>
@@ -33,3 +35,27 @@ export default class AddStudent extends Component {
     );
   }
 }
+
+
+function mapStateToProps(state, ownProps) {
+  return { newStudent: state.newStudent };
+}
+
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    handleChange(event) {
+      const action = writeStudentName(event.target.value);
+      dispatch(action);
+    },
+    handleSubmit(event) {
+      event.preventDefault();
+      const name = event.target.name.value;
+      dispatch(postStudent({ name }, ownProps.history));
+      dispatch(writeStudentName(''));
+    },
+
+  };
+}
+
+const newStudentContainer = connect(mapStateToProps, mapDispatchToProps)(AddStudent);
+export default newStudentContainer;
