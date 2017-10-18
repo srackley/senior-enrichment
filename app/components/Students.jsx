@@ -38,10 +38,8 @@ export class Students extends Component {
             </tr>
           </thead>
           <tbody>
-            { students.map(student =>
-            (
+            { students.map(student => (
               <tr>
-
                 <td>{student.id}</td>
                 <td>{student.name}</td>
                 <td>{student.campus.name}</td>
@@ -51,7 +49,7 @@ export class Students extends Component {
                   </NavLink>
                 </td>
               </tr>
-            )) }
+            ))}
           </tbody>
         </Table>
       </main>
@@ -60,7 +58,10 @@ export class Students extends Component {
 }
 
 function mapStateToProps(state) {
-  return { campuses: state.campuses, students: state.students };
+  return {
+    campuses: state.campuses,
+    students: state.students,
+  };
 }
 
 export default withRouter(connect(mapStateToProps)(Students));

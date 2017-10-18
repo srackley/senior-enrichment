@@ -12,6 +12,11 @@ export default class Home extends Component {
       }
       carouselImages[counter].classList.remove('hidden');
     }, 3000);
+
+    carouselImages.forEach((image) => {
+      console.log(image.style);
+      image.style.top = `${window.scrollY / 3}px`;
+    });
   }
 
   render() {

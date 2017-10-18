@@ -15,6 +15,30 @@ import store from '../store';
 
 export default class Root extends Component {
   componentDidMount() {
+    const header = document.getElementsByTagName('header')[0];
+
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 109) {
+        header.classList.add('active');
+      } else {
+        header.classList.remove('active');
+      }
+
+      const sections = Array.from(document.querySelectorAll('section'));
+      const rects = sections.map(section => section.getBoundingClientRect());
+
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const rect = rects[i];
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          section.classList.add('active');
+        } else {
+          section.classList.remove('active');
+        }
+      }
+    });
+
     const studentsThunk = fetchStudents();
     const campusesThunk = fetchCampuses();
     store.dispatch(studentsThunk);
@@ -26,13 +50,13 @@ export default class Root extends Component {
       <div>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="campuses/:campusId" component={SingleCampus} />
+          <Route exact path="/students/:studentId" component={SingleStudent} />
           <Route exact path="/campuses" component={Campuses} />
           <Route exact path="/students" component={Students} />
           <Route exact path="/new-campus" component={AddCampus} />
           <Route exact path="/new-student" component={AddStudent} />
-          <Route exact path="campuses/:campusId" component={SingleCampus} />
-          <Route exact path="/students/:studentId" component={SingleStudent} />
+          <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
       </div>
