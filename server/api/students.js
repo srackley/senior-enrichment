@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
 
 // POST /api/students
 router.post('/', (req, res, next) => {
+  console.log(req.body);
   Campuses.findOrCreate({
     where: {
       id: req.body.campusId,
