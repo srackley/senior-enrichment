@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 import Campuses from './Campuses';
 import Header from './Navbar';
@@ -52,7 +53,6 @@ export class Root extends Component {
           <Route exact path="/campuses/:campusId" component={SingleCampus} />
           <Route exact path="/students" component={Students} />
           <Route exact path="/students/:studentId" component={SingleStudent} />
-
           <Route exact path="/new-campus" component={AddCampus} />
           <Route exact path="/new-student" component={AddStudent} />
           <Route exact path="/" component={Home} />
@@ -66,4 +66,4 @@ export class Root extends Component {
 const mapStateToProps = null;
 const mapDispatchToProps = { fetchCampuses, fetchStudents };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Root);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Root));

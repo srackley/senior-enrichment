@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { postStudent } from '../reducers';
 import store from '../store';
 
@@ -81,4 +82,4 @@ function mapStateToProps(state, ownProps) {
 
 const mapDispatchToProps = null;
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddStudent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddStudent));

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Table, PageHeader } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import React, { Component } from 'react';
 import SingleStudent from './SingleStudent';
 import AddStudent from './AddStudent';
@@ -27,7 +27,7 @@ export class Students extends Component {
 
     return (
       <main>
-        <PageHeader>Students</PageHeader>
+        <h1>Students</h1>
         <Table responsive hover fill>
           <thead>
             <tr>

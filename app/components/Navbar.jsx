@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { slide as Menu } from 'react-burger-menu';
@@ -13,7 +14,7 @@ export function Header(props) {
         { props.campuses.map(campus =>
                   (<NavLink className="navbar-item " to={`/campuses/${campus.id}`}>
                     {campus.name}
-                   </NavLink>))}
+                  </NavLink>))}
         <a
           className="bd-tw-button button"
           data-social-network="Twitter"
@@ -45,4 +46,4 @@ const mapStateToProps = state => ({
   campuses: state.campuses,
 });
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
