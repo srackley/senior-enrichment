@@ -1,3 +1,4 @@
+
 $default-font-color: #AFB1B6;
 $default-background: #2B303B;
 $darker-background: #303641;
@@ -15,6 +16,61 @@ $script-font-family: 'Dancing Script', cursive;
 body {
   height: 100vh;
 
+  .navbar-item {
+    transition: transform .5s ease;
+  }
+
+  .navbar-item:hover {
+      border-left: 3px solid #34806b;
+      transform: scale(1.4);
+    }
+
+
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+  }
+
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #373a47;
+  }
+
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+  }
+
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #373a47;
+  }
+
+  /* General sidebar styles */
+  .bm-menu {
+    background: white;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+  }
+
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
   #main {
     height: 100%;
     position: absolute;
@@ -22,56 +78,7 @@ body {
     text-align: center;
     font-family: $default-font-family;
 
-    header {
-      display: flex;
-      position: fixed;
-      margin: 0 2.5%;
-      padding: 10px;
-      width: 95%;
-      color: #fff;
-      background-color: rgba(37, 37, 37, 0.8);
-      border-radius: 0 0 2em 2em;
-      z-index: 2;
-      transform: translateY(-9em);
-      transition: transform 1s;
-    }
 
-    header.active{
-      transform: translateY(-4.5em);
-    }
-
-    header .logo {
-      flex-grow: 1;
-      padding-top: 0.25em;
-    }
-
-    header nav {
-      display: flex;
-      flex-direction: row;
-      padding: 2em 1em 1em 1em;
-    }
-
-    .nav-item {
-      height: auto;
-      padding-top: 40px;
-      margin: 0 1.5em 0 0;
-    }
-
-    .nav-item .link {
-      height: 20px;
-      font-size: 1.3em;
-      color: #fff;
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 10px;
-      transition: all ease 1s;
-
-      &:hover {
-        color: #202b47;
-        background-color: #fff;
-        box-shadow: #d3d3d3;
-      }
-    }
 
     img {
       max-width: 100%;
@@ -98,7 +105,7 @@ body {
       min-width: 100%;
       height: 100%;
       opacity: 1;
-      transition: opacity 5s linear;
+      transition: opacity 2s linear;
     }
 
     #carousel .carousel-image.hidden {
@@ -121,42 +128,42 @@ body {
       }
   }
 
-  .campus {
-    position: relative;
-    text-align: center;
-    padding: 40px;
-  }
+  // .campus {
+  //   position: relative;
+  //   text-align: center;
+  //   padding: 40px;
+  // }
 
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 8em;
-    color: white;
-    font-family: $script-font-family;
-    text-shadow: 2px 2px 4px #000000;
-  }
+  // .centered {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   font-size: 8em;
+  //   color: white;
+  //   font-family: $script-font-family;
+  //   text-shadow: 2px 2px 4px #000000;
+  // }
 
-  #plus {
-    font-size: 5em;
-    position: fixed;
-    bottom: 0px;
-    right: 20px;
-    z-index: 4;
-    color: $default-background;
-    text-shadow: 5px 5px 8px #000000;
-    transition: all .3s ease;
+  // #plus {
+  //   font-size: 5em;
+  //   position: fixed;
+  //   bottom: 0px;
+  //   right: 20px;
+  //   z-index: 4;
+  //   color: $default-background;
+  //   text-shadow: 5px 5px 8px #000000;
+  //   transition: all .3s ease;
 
-    &:hover {
-      color: $darker-background;
-      transform: translateY(1px);
-      text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-  }
+  //   &:hover {
+  //     color: $darker-background;
+  //     transform: translateY(1px);
+  //     text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  //   }
+  // }
 
-  .pageHeading {
-    padding-top: 20px;
-  }
+  // .pageHeading {
+  //   padding-top: 20px;
+  // }
 }
 }

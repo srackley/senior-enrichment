@@ -22,8 +22,8 @@ export default class Home extends Component {
   render() {
     return (
       <main>
-        <section id="carousel">
-          <div id="carousel-text">
+        <section id="carousel" className="section">
+          <div id="carousel-text" className="container">
             <h2>Welcome to </h2>
             <h1>Margaret Hamilton Interplanetary Academy</h1>
           </div>
