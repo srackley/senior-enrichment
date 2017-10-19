@@ -1,48 +1,50 @@
 import axios from 'axios';
-// import socket from '../socket';
 
-const GET_STUDENT = 'GET_STUDENT';
-const GET_STUDENTS = 'GET_STUDENTS';
+const GET_ONE_STUDENT = 'GET_ONE_STUDENT';
+const GET_ALL_STUDENTS = 'GET_ALL_STUDENTS';
+const UPDATE = 'UPDATE';
+const REMOVE = 'REMOVE';
 
-export function getStudent(student) {
-  const action = { type: GET_STUDENT, student };
-  return action;
-}
+const getStudent = student => ({ type: GET_ONE_STUDENT, student });
+const getStudents = students => ({ type: GET_ALL_STUDENTS, students });
+const update = student => ({ type: UPDATE, student });
+const remove = id => ({ type: REMOVE, id });
 
-export function getStudents(students) {
-  const action = { type: GET_STUDENTS, students };
-  return action;
-}
 
-export function fetchStudents() {
-  return function thunk(dispatch) {
-    return axios.get('/api/students')
-      .then(res => res.data)
-      .then((students) => {
-        const action = getStudents(students);
-        dispatch(action);
-      });
-  };
-}
+export const fetchStudents = () => dispatch =>
+  axios.get('/api/students')
+    .then(students => dispatch(getStudents(students.data)));
 
-export function postStudent(student) {
-  return function thunk(dispatch) {
-    return axios.post('/api/students', student)
-      .then(res => res.data)
-      .then((newStudent) => {
-        const action = getStudent(newStudent);
-        dispatch(action);
-        // socket.emit('new-student', newStudent);
-      });
-  };
-}
+
+export const postStudent = student => dispatch =>
+  axios.post('/api/students', student)
+    .then(newStudent => dispatch(getStudent(newStudent.data)));
+
+export const updateStudent = (id, student) => (dispatch) => {
+  axios.put(`/api/students/${id}`, student)
+    .then(res => dispatch(update(res.data)))
+    .catch(err => console.error(`Updating student: ${student} unsuccessful`, err));
+};
+
+export const deleteStudent = id => (dispatch) => {
+  dispatch(remove(id));
+  axios.delete(`/api/students/${id}`)
+    .catch(err => console.error(`Removing student: ${id} unsuccessful`, err));
+};
+
 
 export default function studentsReducer(state = [], action) {
   switch (action.type) {
-    case GET_STUDENTS:
+    case GET_ALL_STUDENTS:
       return action.students;
-    case GET_STUDENT:
+    case GET_ONE_STUDENT:
       return [...state, action.student];
+    case REMOVE:
+      return state.filter(student => student.id !== action.id);
+    case UPDATE:
+      return state.map(student => (
+        action.student.id === student.id ? action.student : student
+      ));
     default:
       return state;
   }

@@ -35,7 +35,8 @@ export class SingleCampus extends Component {
                 { students.map(student => (
                   <tr>
                     <td>{student.id}</td>
-                    <td>{student.name}</td>
+                    <td><NavLink to={`/students/${student.id}`}>{student.name}</NavLink></td>
+                    <td>{student.email}</td>
                     <td>{student.campus.name}</td>
                     <td>
                       <NavLink to={`/students/${student.id}`}>

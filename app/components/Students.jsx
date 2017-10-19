@@ -5,7 +5,6 @@ import { Table } from 'react-bootstrap';
 import React, { Component } from 'react';
 import AddStudent from './AddStudent';
 
-
 export class Students extends Component {
   render() {
     const { students } = this.props;
