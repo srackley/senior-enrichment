@@ -4,10 +4,11 @@ import { withRouter } from 'react-router';
 import { Table } from 'react-bootstrap';
 import React, { Component } from 'react';
 import AddStudent from './AddStudent';
+import { deleteStudent } from '../reducers';
 
 export class Students extends Component {
   render() {
-    const { students } = this.props;
+    const { students, deleteStudent } = this.props;
     return (
       <div>
         <h1>Students</h1>
@@ -28,7 +29,7 @@ export class Students extends Component {
                 <td><NavLink to={`/students/${student.id}`}>{student.name}</NavLink></td>
                 <td>{student.email}</td>
                 <td><NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink></td>
-                <td>X</td>
+                <td><NavLink to="/students/" onClick={() => deleteStudent(student.id)}>X</NavLink></td>
               </tr>
             ))}
           </tbody>
@@ -46,4 +47,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(Students));
+const mapDispatchToProps = { deleteStudent };
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Students));

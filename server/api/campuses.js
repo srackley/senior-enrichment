@@ -20,7 +20,7 @@ router.get('/:campusId', (req, res, next) => {
 
 // GET /api/campuses/:campusId/students
 router.get('/:campusId/students', (req, res, next) => {
-  const campusId = req.params.campusId;
+  const { campusId } = req.params;
 
   Students.findAll({ where: { campusId } })
     .then(students => res.json(students))

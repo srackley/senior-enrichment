@@ -17,7 +17,7 @@ export class SingleCampus extends Component {
     const students = this.props.studentsFromCampus;
     return (
       <div>
-        { (campus.name && students.length) ?
+        { (campus.name) ?
           <div>
             <h1>{campus.name}</h1>
             <img src={campus.image} />
@@ -32,7 +32,7 @@ export class SingleCampus extends Component {
                 </tr>
               </thead>
               <tbody>
-                { students.map(student => (
+                { (students.length) ? students.map(student => (
                   <tr>
                     <td>{student.id}</td>
                     <td><NavLink to={`/students/${student.id}`}>{student.name}</NavLink></td>
@@ -49,7 +49,9 @@ export class SingleCampus extends Component {
                       </NavLink>
                     </td>
                   </tr>
-            ))}
+            ))
+          : null
+        }
               </tbody>
             </Table>
           </div>

@@ -19,10 +19,10 @@ export class AddCampus extends Component {
         <form onSubmit={
         (event) => {
         event.preventDefault();
-        store.dispatch(postCampus({
+        this.props.postCampus({
           name: this.state.name,
           image: this.state.image,
-}));
+});
       }}
         >
           <div className="form-group">
@@ -62,6 +62,6 @@ function mapStateToProps(state, ownProps) {
   return { campuses: state.campuses };
 }
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = { postCampus };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddCampus));
