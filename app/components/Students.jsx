@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Table } from 'react-bootstrap';
@@ -26,10 +26,13 @@ export class Students extends Component {
             { students.map(student => (
               <tr>
                 <td>{student.id}</td>
-                <td><NavLink to={`/students/${student.id}`}>{student.name}</NavLink></td>
+                <td><Link to={`/students/${student.id}`}>{student.name}</Link></td>
                 <td>{student.email}</td>
-                <td><NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink></td>
-                <td><NavLink to="/students/" onClick={() => deleteStudent(student.id)}>X</NavLink></td>
+                <td><Link to={`/campuses/${student.campus.id}`}>{student.campus.name}</Link></td>
+                <td><Link to="/students/" onClick={() => deleteStudent(student.id)}>
+                  <i className="fa fa-trash-o" />
+                    </Link>
+                </td>
               </tr>
             ))}
           </tbody>

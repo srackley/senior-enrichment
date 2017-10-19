@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchStudent, deleteStudent, updateStudent } from '../reducers';
 
 export class SingleStudent extends Component {
@@ -20,10 +20,11 @@ export class SingleStudent extends Component {
         <div>
           <h1>Here you will view an individual student {student.name} </h1>
           <h2>{student.email}</h2>
-          <NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink>
+          <Link to={`/campuses/${student.campus.id}`}>{student.campus.name}</Link>
           <div>
             <button onClick={() => updateStudent(student.id)}>Save</button>
-            <button onClick={() => deleteStudent(student.id)}>Delete</button>
+            <button onClick={() => deleteStudent(student.id)}>             <i className="fa fa-trash-o" /> Delete
+            </button>
           </div>
         </div>
       : null

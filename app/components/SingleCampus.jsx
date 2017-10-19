@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Table } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import { fetchCampus, fetchStudentsFromCampus } from '../reducers';
+import { Link } from 'react-router-dom';
+import { fetchCampus } from '../reducers';
 
 export class SingleCampus extends Component {
   componentDidMount() {
     const id = this.props.match.params.campusId;
     this.props.fetchCampus(id);
-    this.props.fetchStudentsFromCampus(id);
   }
 
   render() {
     const campus = this.props.oneCampus;
-    const students = this.props.studentsFromCampus;
+    const students = campus.students;
     return (
       <div>
         { (campus.name) ?
@@ -35,18 +34,17 @@ export class SingleCampus extends Component {
                 { (students.length) ? students.map(student => (
                   <tr>
                     <td>{student.id}</td>
-                    <td><NavLink to={`/students/${student.id}`}>{student.name}</NavLink></td>
+                    <td><Link to={`/students/${student.id}`}>{student.name}</Link></td>
                     <td>{student.email}</td>
                     <td>{student.campus.name}</td>
                     <td>
-                      <NavLink to={`/students/${student.id}`}>
+                      <Link to={`/students/${student.id}`}>
                         <i className="fa fa-pencil-square-o" />
-                      </NavLink>
+                      </Link>
                     </td>
                     <td>
-                      <NavLink to={`/students/${student.id}`}>
-                        <i className="fa fa-trash-o" />
-                      </NavLink>
+                      <button onClick={() => deleteStudent(student.id)}>             <i className="fa fa-trash-o" /> Delete
+                      </button>
                     </td>
                   </tr>
             ))
@@ -71,6 +69,6 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = { fetchCampus, fetchStudentsFromCampus };
+const mapDispatchToProps = { fetchCampus };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleCampus));

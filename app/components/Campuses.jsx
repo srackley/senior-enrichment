@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import AddCampus from './AddCampus';
@@ -14,10 +14,10 @@ export function Campuses(props) {
         {
         props.campuses.map(campus => (
           <div className="campus">
-            <NavLink to={`/campuses/${campus.id}`} activeClassName="active">
+            <Link to={`/campuses/${campus.id}`} activeClassName="active">
               <img src={campus.image} />
               <div className="centered">{campus.name}</div>
-            </NavLink>
+            </Link>
           </div>
         ))
       }

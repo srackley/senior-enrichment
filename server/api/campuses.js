@@ -6,24 +6,23 @@ module.exports = router;
 
 // GET api/campuses
 router.get('/', (req, res, next) => {
-  Campuses.findAll()
+  Campuses.findAll({
+    include: [
+      { model: Students },
+    ],
+  })
     .then(campuses => res.json(campuses))
     .catch(next);
 });
 
 // GET /api/campuses/:campusId
 router.get('/:campusId', (req, res, next) => {
-  Campuses.findById(req.params.campusId)
+  Campuses.findById(req.params.campusId, {
+    include: [
+      { model: Students },
+    ],
+  })
     .then(campus => res.json(campus))
-    .catch(next);
-});
-
-// GET /api/campuses/:campusId/students
-router.get('/:campusId/students', (req, res, next) => {
-  const { campusId } = req.params;
-
-  Students.findAll({ where: { campusId } })
-    .then(students => res.json(students))
     .catch(next);
 });
 
