@@ -36,19 +36,19 @@ x- Campuses
 #### See Wireframes folder for visual
 
 - Navigation: as a user I...
-  * will land on **Home** by default
-  * can navigate to **Campuses** from **Home**
-  * can navigate to **Students** from **Home**
-  * can navigate to view a **Single Campus** from **Campuses**
-  * can navigate to view a **Single Student** from **Students**
-  * can navigate to view a **Single Student** from **Single Campus** (for any student at that campus)
-  * can navigate to view that student's **Single Campus** from **Single Student**
+x  * will land on **Home** by default
+x  * can navigate to **Campuses** from **Home**
+x  * can navigate to **Students** from **Home**
+x  * can navigate to view a **Single Campus** from **Campuses**
+x  * can navigate to view a **Single Student** from **Students**
+x  * can navigate to view a **Single Student** from **Single Campus** (for any student at that campus)
+x  * can navigate to view that student's **Single Campus** from **Single Student**
 
 - Views: as a user I...
-  * see a list of all campuses on the **Campuses** view
-  * see a list of all students on the **Students** view
-  * see details about a campus on the **Single Campus** view, including that campus's students
-  * see details about a student on the **Single Student** view, including that student's campus
+x  * see a list of all campuses on the **Campuses** view
+x  * see a list of all students on the **Students** view
+x  * see details about a campus on the **Single Campus** view, including that campus's students
+x  * see details about a student on the **Single Student** view, including that student's campus
 
 - Actions: as a user I...
   * can create a campus

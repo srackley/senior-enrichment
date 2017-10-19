@@ -17,10 +17,8 @@ export function getCampus(campus) {
 export function fetchCampuses() {
   return function thunk(dispatch) {
     return axios.get('/api/campuses')
-      .then(res => res.data)
       .then((campuses) => {
-        const action = getCampuses(campuses);
-        dispatch(action);
+        dispatch(getCampuses(campuses.data));
       });
   };
 }
@@ -28,10 +26,8 @@ export function fetchCampuses() {
 export function postCampus(campus, history) {
   return function thunk(dispatch) {
     return axios.post('/api/campuses', campus)
-      .then(res => res.data)
       .then((newCampus) => {
-        const action = getCampus(newCampus);
-        dispatch(action);
+        dispatch(getCampus(newCampus.data));
         // socket.emit('new-campus', newCampus);
         // history.push(`/campuses/${newCampus.id}`);
       });

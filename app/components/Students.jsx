@@ -3,56 +3,39 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Table } from 'react-bootstrap';
 import React, { Component } from 'react';
-import SingleStudent from './SingleStudent';
 import AddStudent from './AddStudent';
-import store from '../store';
 
 
 export class Students extends Component {
-  constructor() {
-    super();
-    this.state = store.getState();
-  }
-
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => this.setState(store.getState()));
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
   render() {
-    const { students } = this.state;
-
+    const { students } = this.props;
     return (
-      <main>
+      <div>
         <h1>Students</h1>
         <Table responsive hover fill>
           <thead>
             <tr>
               <th>#</th>
               <th>Name</th>
+              <th>Email</th>
               <th>Campus</th>
-              <th>Edit</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
             { students.map(student => (
               <tr>
                 <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.campus.name}</td>
-                <td>
-                  <NavLink to={`/students/${student.id}`}>
-                    <i className="fa fa-pencil-square-o" />
-                  </NavLink>
-                </td>
+                <td><NavLink to={`/students/${student.id}`}>{student.name}</NavLink></td>
+                <td>{student.email}</td>
+                <td><NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink></td>
+                <td>X</td>
               </tr>
             ))}
           </tbody>
         </Table>
-      </main>
+        <AddStudent />
+      </div>
     );
   }
 }

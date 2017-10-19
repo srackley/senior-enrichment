@@ -21,7 +21,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <main>
+      <div>
         <section id="carousel" className="section">
           <div id="carousel-text" className="container">
             <h2>Welcome to </h2>
@@ -32,7 +32,7 @@ export default class Home extends Component {
           <img className="carousel-image hidden" src="images/marsHero.jpg" />
           <img className="carousel-image hidden" src="images/titanHero.jpg" />
         </section>
-      </main>
+      </div>
     );
   }
 }

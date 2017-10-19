@@ -15,7 +15,7 @@ export class AddCampus extends Component {
 
   render() {
     return (
-      <main>
+      <div>
         <form onSubmit={
         (event) => {
         event.preventDefault();
@@ -53,7 +53,7 @@ export class AddCampus extends Component {
             <button type="submit" className="btn btn-default">Add Campus</button>
           </div>
         </form>
-      </main>
+      </div>
     );
   }
 }

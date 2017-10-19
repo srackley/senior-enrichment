@@ -4,17 +4,24 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { slide as Menu } from 'react-burger-menu';
 
-export function Header(props) {
+export function Sidebar(props) {
   return (
-    <header>
+    <sidebar>
       <Menu>
         <NavLink className="navbar-item" to="/">Home</NavLink>
         <NavLink className="navbar-item" to="/students">Students</NavLink>
         <NavLink className="navbar-item" to="/campuses">Campuses</NavLink>
-        { props.campuses.map(campus =>
-                  (<NavLink className="navbar-item " to={`/campuses/${campus.id}`}>
-                    {campus.name}
-                  </NavLink>))}
+        <div>
+          {
+          props.campuses.map(campus =>
+          (
+            <NavLink className="navbar-item " to={`/campuses/${campus.id}`}>
+              {campus.name}
+            </NavLink>
+          ))
+        }
+        </div>
+        <hr />
         <a
           className="bd-tw-button button"
           data-social-network="Twitter"
@@ -37,7 +44,7 @@ export function Header(props) {
           <span>Contact</span>
         </a>
       </Menu>
-    </header>
+    </sidebar>
 
   );
 }
@@ -46,4 +53,4 @@ const mapStateToProps = state => ({
   campuses: state.campuses,
 });
 
-export default withRouter(connect(mapStateToProps)(Header));
+export default withRouter(connect(mapStateToProps)(Sidebar));
