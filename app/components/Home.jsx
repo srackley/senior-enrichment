@@ -23,7 +23,7 @@ export default class Home extends Component {
     return (
       <div>
         <section id="carousel" className="section">
-          <div id="carousel-text" className="container">
+          <div id="carousel-text">
             <h2>Welcome to </h2>
             <h1>Margaret Hamilton Interplanetary Academy</h1>
           </div>

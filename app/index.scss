@@ -13,6 +13,8 @@ $script-font-family: 'Dancing Script', cursive;
   box-sizing: border-box;
 }
 
+
+
 body {
   height: 100vh;
 
@@ -78,11 +80,158 @@ body {
     text-align: center;
     font-family: $default-font-family;
 
+    .paddedContainer {
+      padding: 40px;
+    }
 
+    .centerForm {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);    }
 
+    form {
+width: 80%;
+padding: 50px;
+
+      }
+
+      .colorInput {
+          background-color: #3CBC8D;
+          color: white;
+          font-weight: 700;
+      }
+
+      .colorInput::placeholder {
+        color: white;
+        font-weight: 700;
+      }
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 3px solid grey;
+  font-size: calc(12px + 1vw);
+}
+
+input[type=button], input[type=submit], input[type=delete] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 46px;
+}
+
+.deleteButton {
+  padding: 10px;
+  margin: 10px;
+  font-size: calc(12px + 1vw);
+  background-color: white;
+  color: black;
+  border: 2px solid red;
+}
+
+.deleteButton:hover {
+  background-color: red; /* Green */
+  color: white;
+}
+
+.x {
+  padding: 0 5px 0 5px;
+  margin: 0;
+  border: none;
+  color: red;
+}
+
+.x:hover {
+  background-color: red;
+  color: white;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  font-size: calc(12px + 1vw);
+  color: black;
+  border: 2px solid #4CAF50;
+  transition: all .5s ease;
+  float: left;
+}
+
+button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+
+label {
+  float: left;
+  font-size: calc(12px + 1vw);
+}
+
+select {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  font-size: calc(12px + 1vw);
+}
+
+// input:focus {
+//   border: 3px solid #555;
+
+// }
+
+    h1 {
+      font-family: $logo-font-family;
+      font-size: calc(30px + 2vw);
+      padding-bottom: 40px;
+      padding-top: 20px;
+    }
+    h2 {
+      font-family: $script-font-family;
+      font-size: calc(26px + 2vw);
+    }
     img {
       max-width: 25vw;
       height: 25vw;
+    }
+
+    table {
+      width: 90%;
+      margin-left: 5%;
+
+      td {
+        font-size: calc(8px + 1vw);
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      th {
+        background-color: $active-background;
+        color: white;
+        font-size: calc(10px + 1vw);
+      }
+
+      td, th {
+        padding: 5px;
+      }
+    }
+
+    Link a {
+      text-decoration: none;
+      color: black;
+      background-color: red;
+      font-family: $script-font-family
+
     }
 
     section {
@@ -119,13 +268,6 @@ body {
       position: absolute;
       top: 30vh;
 
-      h1 {
-        font-family: $logo-font-family;
-      }
-
-      h2 {
-        font-family: $script-font-family;
-      }
   }
 
   .container {

@@ -21,8 +21,10 @@ export class SingleStudent extends Component {
     const { student, updateStudent } = this.props;
 
     return (
-      <div>
-        <form onSubmit={
+      <div className="paddedContainer">
+        <form
+          className="centerForm"
+          onSubmit={
       (event) => {
       event.preventDefault();
       updateStudent(this.props.match.params.studentId, {
@@ -37,11 +39,11 @@ export class SingleStudent extends Component {
           <div className="form-group">
             <label htmlFor="name">Student's Name</label>
             <input
+              className="colorInput"
               value={this.props.name}
               onChange={(event) => {
           this.setState({ name: event.target.value });
 }}
-              className="form-control"
               type="text"
               name="campusName"
               placeholder={student.name}
@@ -54,7 +56,7 @@ export class SingleStudent extends Component {
               onChange={(event) => {
           this.setState({ email: event.target.value });
         }}
-              className="form-control"
+              className="colorInput"
               type="text"
               name="campusName"
               placeholder={student.email}

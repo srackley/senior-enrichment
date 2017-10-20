@@ -14,7 +14,7 @@ export class AddCampus extends Component {
 
   render() {
     return (
-      <div>
+      <div className="paddedContainer">
         <form onSubmit={
         (event) => {
         event.preventDefault();
@@ -24,32 +24,36 @@ export class AddCampus extends Component {
 });
       }}
         >
-          <div className="form-group">
-            <label htmlFor="name">Add a Campus</label>
-            <input
-              value={this.props.newCampus}
-              onChange={(event) => {
+          <div className="form-group paddedContainer">
+            <div>
+              <label htmlFor="name">Add a Campus</label>
+              <input
+                value={this.props.newCampus}
+                onChange={(event) => {
             this.setState({ name: event.target.value });
 }}
-              className="form-control"
-              type="text"
-              name="campusName"
-              placeholder="Enter campus name"
-            />
-            <label htmlFor="name">Add an Image</label>
-            <input
-              value={this.props.newCampus}
-              onChange={(event) => {
+                className="form-control"
+                type="text"
+                name="campusName"
+                placeholder="Enter campus name"
+              />
+            </div>
+            <div>
+              <label htmlFor="name">Add an Image</label>
+              <input
+                value={this.props.newCampus}
+                onChange={(event) => {
             this.setState({ image: event.target.value });
           }}
-              className="form-control"
-              type="text"
-              name="campusName"
-              placeholder="Enter image url"
-            />
+                className="form-control"
+                type="text"
+                name="campusName"
+                placeholder="Enter image url"
+              />
+            </div>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-default">Add Campus</button>
+            <button type="submit" className="btn btn-default">Create New Campus</button>
           </div>
         </form>
       </div>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import AddStudent from './AddStudent';
 import { fetchCampus, updateCampus, deleteCampus, deleteStudent } from '../reducers';
 
 export class SingleCampus extends Component {
@@ -24,24 +25,26 @@ export class SingleCampus extends Component {
     } = this.props;
     const { students } = campus;
     return (
-      <div>
+      <div className="paddedContainer">
         { (campus.name) ?
-          <div>
+          <div className="paddedContainer">
             <img src={campus.image} />
-            <form onSubmit={
+            <form
+              onSubmit={
             (event) => {
             event.preventDefault();
             updateCampus(campus.id, { name: this.state.name });
-             console.log(this.state);
           }}
+              className="paddedContainer"
             >
               <div className="form-group">
                 <input
+
                   value={this.props.name}
                   onChange={(event) => {
                 this.setState({ name: event.target.value });
       }}
-                  className="form-control"
+                  className="colorInput"
                   type="text"
                   name="campusName"
                   placeholder={campus.name}
@@ -49,11 +52,13 @@ export class SingleCampus extends Component {
               </div>
               <div className="form-group">
                 <button type="submit" className="btn btn-default">Change Campus Name</button>
+
+                <button type="delete" className="deleteButton" onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
               </div>
             </form>
-            <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
 
-            <Table responsive hover fill>
+
+            <table>
               <thead>
                 <tr>
                   <th>#</th>
@@ -61,7 +66,7 @@ export class SingleCampus extends Component {
                   <th>Email</th>
                   <th>Campus</th>
                   <th>Edit</th>
-                  <th>Remove</th>
+                  <th><i className="fa fa-trash-o" /></th>
                 </tr>
               </thead>
               <tbody>
@@ -77,7 +82,7 @@ export class SingleCampus extends Component {
                       </Link>
                     </td>
                     <td>
-                      <button onClick={() => deleteStudent(student.id)}>             <i className="fa fa-trash-o" /> Delete
+                      <button className="x" onClick={() => deleteStudent(student.id)}>X
                       </button>
                     </td>
                   </tr>
@@ -85,10 +90,12 @@ export class SingleCampus extends Component {
           : null
         }
               </tbody>
-            </Table>
+            </table>
           </div>
         : null
     }
+
+        <AddStudent />
       </div>
     );
   }

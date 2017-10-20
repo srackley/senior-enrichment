@@ -17,7 +17,7 @@ export class AddStudent extends Component {
   render() {
     console.log(this.state);
     return (
-      <div>
+      <div className="paddedContainer">
         <form onSubmit={
         (event) => {
         event.preventDefault();
