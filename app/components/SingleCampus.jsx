@@ -20,7 +20,7 @@ export class SingleCampus extends Component {
 
   render() {
     const {
-      campus, updateCampus, deleteStudent, deleteCampus,
+      campus, updateçCampus, deleteStudent, deleteCampus,
     } = this.props;
     const { students } = campus;
     return (
