@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { postCampus } from '../reducers';
-import store from '../store';
 
 export class AddCampus extends Component {
   constructor() {

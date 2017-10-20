@@ -14,7 +14,7 @@ export function Campuses(props) {
         {
         props.campuses.map(campus => (
           <div className="campus">
-            <Link to={`/campuses/${campus.id}`} activeClassName="active">
+            <Link to={`/campuses/${campus.id}`}>
               <img src={campus.image} />
               <div className="centered">{campus.name}</div>
             </Link>

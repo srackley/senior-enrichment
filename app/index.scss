@@ -18,13 +18,12 @@ body {
 
   .navbar-item {
     transition: transform .5s ease;
-  }
 
-  .navbar-item:hover {
+    &:hover, &.active {
       border-left: 3px solid #34806b;
       transform: scale(1.4);
     }
-
+  }
 
   .bm-burger-button {
     position: fixed;

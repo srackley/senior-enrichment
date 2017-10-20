@@ -3,28 +3,62 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { fetchCampus } from '../reducers';
+import { fetchCampus, updateCampus, deleteCampus, deleteStudent } from '../reducers';
 
 export class SingleCampus extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+    };
+  }
+
   componentDidMount() {
     const id = this.props.match.params.campusId;
     this.props.fetchCampus(id);
   }
 
   render() {
-    const campus = this.props.oneCampus;
-    const students = campus.students;
+    const {
+      campus, updateCampus, deleteStudent, deleteCampus,
+    } = this.props;
+    const { students } = campus;
     return (
       <div>
         { (campus.name) ?
           <div>
-            <h1>{campus.name}</h1>
             <img src={campus.image} />
+            <form onSubmit={
+            (event) => {
+            event.preventDefault();
+            updateCampus(campus.id, { name: this.state.name });
+             console.log(this.state);
+          }}
+            >
+              <div className="form-group">
+                <input
+                  value={this.props.name}
+                  onChange={(event) => {
+                this.setState({ name: event.target.value });
+      }}
+                  className="form-control"
+                  type="text"
+                  name="campusName"
+                  placeholder={campus.name}
+                />
+              </div>
+              <div className="form-group">
+                <button type="submit" className="btn btn-default">Change Campus Name</button>
+              </div>
+            </form>
+            <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
+
             <Table responsive hover fill>
               <thead>
                 <tr>
                   <th>#</th>
                   <th>Name</th>
+                  <th>Email</th>
                   <th>Campus</th>
                   <th>Edit</th>
                   <th>Remove</th>
@@ -64,11 +98,12 @@ function mapStateToProps(state) {
   return {
     campuses: state.campuses,
     students: state.students,
-    oneCampus: state.oneCampus,
-    studentsFromCampus: state.studentsFromCampus,
+    campus: state.oneCampus,
   };
 }
 
-const mapDispatchToProps = { fetchCampus };
+const mapDispatchToProps = {
+  fetchCampus, updateCampus, deleteCampus, deleteStudent,
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleCampus));

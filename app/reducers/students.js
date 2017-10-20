@@ -2,13 +2,13 @@ import axios from 'axios';
 
 const GET_ONE_STUDENT = 'GET_ONE_STUDENT';
 const GET_ALL_STUDENTS = 'GET_ALL_STUDENTS';
-const UPDATE = 'UPDATE';
-const REMOVE = 'REMOVE';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
+const REMOVE_STUDENT = 'REMOVE_STUDENT';
 
 const getStudent = student => ({ type: GET_ONE_STUDENT, student });
 const getStudents = students => ({ type: GET_ALL_STUDENTS, students });
-const update = student => ({ type: UPDATE, student });
-const remove = id => ({ type: REMOVE, id });
+const update = student => ({ type: UPDATE_STUDENT, student });
+const remove = id => ({ type: REMOVE_STUDENT, id });
 
 
 export const fetchStudents = () => dispatch =>
@@ -21,9 +21,9 @@ export const postStudent = student => dispatch =>
     .then(newStudent => dispatch(getStudent(newStudent.data)));
 
 export const updateStudent = (id, student) => (dispatch) => {
+  dispatch(update(student));
   axios.put(`/api/students/${id}`, student)
-    .then(res => dispatch(update(res.data)))
-    .catch(err => console.error(`Updating student: ${student} unsuccessful`, err));
+    .catch(err => console.error(`Updating student: ${student.name} unsuccessful`, err));
 };
 
 export const deleteStudent = id => (dispatch) => {
@@ -39,9 +39,9 @@ export default function studentsReducer(state = [], action) {
       return action.students;
     case GET_ONE_STUDENT:
       return [...state, action.student];
-    case REMOVE:
+    case REMOVE_STUDENT:
       return state.filter(student => student.id !== action.id);
-    case UPDATE:
+    case UPDATE_STUDENT:
       return state.map(student => (
         action.student.id === student.id ? action.student : student
       ));
