@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { fetchStudent, updateStudent } from '../reducers';
-import store from '../store';
 
 export class SingleStudent extends Component {
   constructor() {

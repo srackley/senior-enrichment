@@ -28,7 +28,7 @@ export function Sidebar(props) {
           data-social-action="tweet"
           data-social-target="https://bulma.io"
           target="_blank"
-          href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&hashtags=bulmaio&url=https://bulma.io&via=jgthms"
+          href="https://twitter.com/intent/tweet?text=MARGARET HAMILTON INTERPLANETARY ACADEMY: An interstellar schooling experience&hashtags"
         >
           <span className="icon">
             <i className="fa fa-twitter" />
